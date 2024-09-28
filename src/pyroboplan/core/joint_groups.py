@@ -13,6 +13,9 @@ class JointGroup:
         if (len(state) != len(self.joint_indices)):
             raise IndexError(f"length of input state ({len(state)}) is not the same as the size of joint model {self.name} ({len(self.joint_indices)})")
 
+    def __getattr__(self, name):
+        return getattr(self.model, name)
+
 class JointGroupManager:
     """
     Wrapper for pinnochio model
@@ -47,6 +50,3 @@ class JointGroupManager:
 
     def __delitem__(self, name):
         del self.joint_groups[name]
-
-    def __getattr__(self, name):
-        return getattr(self.model, name)
