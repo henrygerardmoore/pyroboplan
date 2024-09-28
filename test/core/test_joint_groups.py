@@ -17,6 +17,7 @@ from pyroboplan.models.panda import (
 # Use a fixed seed for random number generation in tests.
 np.random.seed(1234)
 
+
 def test_make_joint_group():
     model, _, _ = load_models()
     jg = JointGroupManager(model)
@@ -29,5 +30,5 @@ def test_make_joint_group():
         jg["IndexError"] = [1]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     test_make_joint_group()
